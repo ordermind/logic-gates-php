@@ -1,0 +1,35 @@
+{
+    "name": "ordermind/logic-gates",
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Provides classes for logic gates such as AND and OR",
+    "keywords": [
+        "collection"
+    ],
+    "authors": [
+        {
+            "name": "Kristofer Tengström",
+            "email": "ordermind@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpmd/phpmd": "^2.8",
+        "phpunit/phpunit": "^8.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpstan/phpstan": "^0.12.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ordermind\\LogicGates\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ordermind\\LogicGates\\Test\\": "tests"
+        }
+    }
+}
