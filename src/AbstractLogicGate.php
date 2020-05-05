@@ -6,7 +6,7 @@ namespace Ordermind\LogicGates;
 
 use TypeError;
 
-abstract class AbstractLogicGate implements LogicGateInterface, LogicGateInputValueInterface
+abstract class AbstractLogicGate implements LogicGateInterface
 {
     /**
      * @var LogicGateInputValueInterface[]

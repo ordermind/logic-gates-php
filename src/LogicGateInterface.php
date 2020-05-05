@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ordermind\LogicGates;
 
-interface LogicGateInterface
+interface LogicGateInterface extends LogicGateInputValueInterface
 {
     /**
      * Executes the logic gate and returns the resulting value.

@@ -6,7 +6,7 @@ namespace Ordermind\LogicGates;
 
 use ArgumentCountError;
 
-class NorGate implements LogicGateInterface, LogicGateInputValueInterface
+class NorGate implements LogicGateInterface
 {
     /**
      * @var OrGate

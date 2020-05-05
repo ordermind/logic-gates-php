@@ -6,7 +6,7 @@ namespace Ordermind\LogicGates;
 
 use ArgumentCountError;
 
-class NandGate implements LogicGateInterface, LogicGateInputValueInterface
+class NandGate implements LogicGateInterface
 {
     /**
      * @var AndGate
