@@ -25,7 +25,15 @@ class XorGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::XOR;
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {

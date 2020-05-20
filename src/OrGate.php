@@ -25,7 +25,15 @@ class OrGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::OR;
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {

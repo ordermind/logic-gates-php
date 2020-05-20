@@ -25,7 +25,15 @@ class NotGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::NOT;
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {

@@ -25,10 +25,26 @@ abstract class AbstractLogicGate implements LogicGateInterface
         $this->inputValues = $inputValues;
     }
 
-    abstract public function execute(): bool;
+    /**
+     * @{inheritDoc}
+     */
+    abstract public static function getName() : string;
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    abstract public function execute() : bool;
+
+    /**
+     * @{inheritDoc}
+     */
+    public function getInputValues() : array
+    {
+        return $this->inputValues;
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function getValue() : bool
     {

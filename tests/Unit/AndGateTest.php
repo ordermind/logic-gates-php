@@ -6,6 +6,7 @@ namespace Ordermind\LogicGates\Test\Unit;
 
 use ArgumentCountError;
 use Ordermind\LogicGates\AndGate;
+use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use PHPUnit\Framework\TestCase;
 use TypeError;
@@ -22,6 +23,22 @@ class AndGateTest extends TestCase
         parent::setUp();
 
         $this->inputValueFactory = new InputValueFactory();
+    }
+
+    public function testGetName()
+    {
+        $this->assertSame(LogicGateEnum::AND, AndGate::getName());
+    }
+
+    public function testGetInputValues()
+    {
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new AndGate($input1, $input2);
+
+        $expected = [$input1, $input2];
+        $this->assertSame($expected, $gate->getInputValues());
     }
 
     public function testZeroValues()

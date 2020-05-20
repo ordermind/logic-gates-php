@@ -25,7 +25,15 @@ class AndGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::AND;
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {

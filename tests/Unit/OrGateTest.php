@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ordermind\LogicGates\Test\Unit;
 
 use ArgumentCountError;
+use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\OrGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use PHPUnit\Framework\TestCase;
@@ -22,6 +23,22 @@ class OrGateTest extends TestCase
         parent::setUp();
 
         $this->inputValueFactory = new InputValueFactory();
+    }
+
+    public function testGetName()
+    {
+        $this->assertSame(LogicGateEnum::OR, OrGate::getName());
+    }
+
+    public function testGetInputValues()
+    {
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new OrGate($input1, $input2);
+
+        $expected = [$input1, $input2];
+        $this->assertSame($expected, $gate->getInputValues());
     }
 
     public function testZeroValues()

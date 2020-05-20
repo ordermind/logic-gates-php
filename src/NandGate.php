@@ -30,7 +30,23 @@ class NandGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::NAND;
+    }
+
+    /**
+     * @{inheritDoc}
+     */
+    public function getInputValues() : array
+    {
+        return $this->andGate->getInputValues();
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {
@@ -38,7 +54,7 @@ class NandGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
      */
     public function getValue() : bool
     {

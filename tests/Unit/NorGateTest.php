@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ordermind\LogicGates\Test\Unit;
 
 use ArgumentCountError;
+use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\NorGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use PHPUnit\Framework\TestCase;
@@ -36,6 +37,22 @@ class NorGateTest extends TestCase
         $this->expectException(TypeError::class);
         $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
         new NorGate(true);
+    }
+
+    public function testGetName()
+    {
+        $this->assertSame(LogicGateEnum::NOR, NorGate::getName());
+    }
+
+    public function testGetInputValues()
+    {
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new NorGate($input1, $input2);
+
+        $expected = [$input1, $input2];
+        $this->assertSame($expected, $gate->getInputValues());
     }
 
     /**

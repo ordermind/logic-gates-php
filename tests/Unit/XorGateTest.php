@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ordermind\LogicGates\Test\Unit;
 
 use ArgumentCountError;
+use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueTrue;
 use Ordermind\LogicGates\XorGate;
@@ -23,6 +24,22 @@ class XorGateTest extends TestCase
         parent::setUp();
 
         $this->inputValueFactory = new InputValueFactory();
+    }
+
+    public function testGetName()
+    {
+        $this->assertSame(LogicGateEnum::XOR, XorGate::getName());
+    }
+
+    public function testGetInputValues()
+    {
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new XorGate($input1, $input2);
+
+        $expected = [$input1, $input2];
+        $this->assertSame($expected, $gate->getInputValues());
     }
 
     public function testZeroValues()

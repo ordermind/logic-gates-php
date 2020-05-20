@@ -30,7 +30,23 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return LogicGateEnum::NOR;
+    }
+
+    /**
+     * @{inheritDoc}
+     */
+    public function getInputValues() : array
+    {
+        return $this->orGate->getInputValues();
+    }
+
+    /**
+     * @{inheritDoc}
      */
     public function execute(): bool
     {
@@ -38,7 +54,7 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritdoc}
+     * @{inheritDoc}
      */
     public function getValue() : bool
     {

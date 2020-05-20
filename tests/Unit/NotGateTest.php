@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ordermind\LogicGates\Test\Unit;
 
 use ArgumentCountError;
+use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\NotGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFalse;
@@ -24,6 +25,21 @@ class NotGateTest extends TestCase
         parent::setUp();
 
         $this->inputValueFactory = new InputValueFactory();
+    }
+
+    public function testGetName()
+    {
+        $this->assertSame(LogicGateEnum::NOT, NotGate::getName());
+    }
+
+    public function testGetInputValues()
+    {
+        $input = $this->inputValueFactory->createFromNative(true);
+
+        $gate = new NotGate($input);
+
+        $expected = [$input];
+        $this->assertSame($expected, $gate->getInputValues());
     }
 
     public function testZeroValues()
