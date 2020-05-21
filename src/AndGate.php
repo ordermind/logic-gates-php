@@ -25,7 +25,7 @@ class AndGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public static function getName(): string
     {
@@ -33,7 +33,7 @@ class AndGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function execute(): bool
     {

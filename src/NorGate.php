@@ -30,7 +30,7 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public static function getName(): string
     {
@@ -38,7 +38,7 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function getInputValues() : array
     {
@@ -46,7 +46,7 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function execute(): bool
     {
@@ -54,7 +54,7 @@ class NorGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function getValue() : bool
     {

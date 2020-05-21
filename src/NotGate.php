@@ -25,7 +25,7 @@ class NotGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public static function getName(): string
     {
@@ -33,7 +33,7 @@ class NotGate extends AbstractLogicGate
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function execute(): bool
     {

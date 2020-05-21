@@ -26,17 +26,17 @@ abstract class AbstractLogicGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     abstract public static function getName() : string;
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     abstract public function execute() : bool;
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function getInputValues() : array
     {
@@ -44,7 +44,7 @@ abstract class AbstractLogicGate implements LogicGateInterface
     }
 
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function getValue() : bool
     {

@@ -9,7 +9,7 @@ use Ordermind\LogicGates\LogicGateInputValueInterface;
 class InputValueFalse implements LogicGateInputValueInterface
 {
     /**
-     * @{inheritDoc}
+     * {@inheritDoc}
      */
     public function getValue() : bool
     {
