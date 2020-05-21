@@ -35,8 +35,8 @@ class NotGate extends AbstractLogicGate
     /**
      * {@inheritDoc}
      */
-    public function execute(): bool
+    public function execute($context = null): bool
     {
-        return !$this->inputValues[0]->getValue();
+        return !$this->inputValues[0]->getValue($context);
     }
 }

@@ -33,7 +33,7 @@ abstract class AbstractLogicGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    abstract public function execute() : bool;
+    abstract public function execute($context = null) : bool;
 
     /**
      * {@inheritDoc}
@@ -46,9 +46,9 @@ abstract class AbstractLogicGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public function getValue() : bool
+    public function getValue($context = null) : bool
     {
-        return $this->execute();
+        return $this->execute($context);
     }
 
     /**

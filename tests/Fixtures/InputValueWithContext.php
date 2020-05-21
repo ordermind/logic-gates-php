@@ -6,13 +6,13 @@ namespace Ordermind\LogicGates\Test\Fixtures;
 
 use Ordermind\LogicGates\LogicGateInputValueInterface;
 
-class InputValueFalse implements LogicGateInputValueInterface
+class InputValueWithContext implements LogicGateInputValueInterface
 {
     /**
      * {@inheritDoc}
      */
     public function getValue($context = null) : bool
     {
-        return false;
+        return $context;
     }
 }

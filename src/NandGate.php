@@ -48,16 +48,16 @@ class NandGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public function execute(): bool
+    public function execute($context = null): bool
     {
-        return !$this->andGate->execute();
+        return !$this->andGate->execute($context);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getValue() : bool
+    public function getValue($context = null) : bool
     {
-        return $this->execute();
+        return $this->execute($context);
     }
 }

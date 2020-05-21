@@ -48,16 +48,16 @@ class NorGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public function execute(): bool
+    public function execute($context = null): bool
     {
-        return !$this->orGate->execute();
+        return !$this->orGate->execute($context);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getValue() : bool
+    public function getValue($context = null) : bool
     {
-        return $this->execute();
+        return $this->execute($context);
     }
 }

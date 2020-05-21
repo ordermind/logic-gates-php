@@ -23,7 +23,9 @@ interface LogicGateInterface extends LogicGateInputValueInterface
     /**
      * Executes the logic gate and returns the resulting value.
      *
+     * @param mixed $context
+     *
      * @return bool
      */
-    public function execute(): bool;
+    public function execute($context = null): bool;
 }

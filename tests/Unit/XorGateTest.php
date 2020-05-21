@@ -8,6 +8,7 @@ use ArgumentCountError;
 use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueTrue;
+use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use Ordermind\LogicGates\XorGate;
 use PHPUnit\Framework\TestCase;
 use TypeError;
@@ -111,6 +112,28 @@ class XorGateTest extends TestCase
             [true, true, false, true],
             [true, true, true, false],
             [false, true, true, true],
+        ];
+    }
+
+    /**
+     * @dataProvider withContextProvider
+     */
+    public function testWithContext(bool $expectedResult, bool $context)
+    {
+        $input1 = new InputValueWithContext();
+        $input2 = new InputValueWithContext();
+
+        $gate = new XorGate($input1, $input2);
+        $result = $gate->execute($context);
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function withContextProvider()
+    {
+        return [
+            [false, true],
+            [false, false],
         ];
     }
 }

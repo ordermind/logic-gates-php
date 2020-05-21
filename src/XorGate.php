@@ -35,13 +35,13 @@ class XorGate extends AbstractLogicGate
     /**
      * {@inheritDoc}
      */
-    public function execute(): bool
+    public function execute($context = null): bool
     {
         $trueCount = 0;
         $falseCount = 0;
 
         foreach ($this->inputValues as $inputValue) {
-            $value = $inputValue->getValue();
+            $value = $inputValue->getValue($context);
             if ($value === true) {
                 $trueCount++;
             } else {

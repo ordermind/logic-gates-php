@@ -10,6 +10,7 @@ use Ordermind\LogicGates\NotGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFalse;
 use Ordermind\LogicGates\Test\Fixtures\InputValueTrue;
+use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
 use TypeError;
 
@@ -81,5 +82,26 @@ class NotGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('A NOT gate must be instantiated with exactly one input value');
         new NotGate(new InputValueTrue(), new InputValueFalse());
+    }
+
+    /**
+     * @dataProvider withContextProvider
+     */
+    public function testWithContext(bool $expectedResult, bool $context)
+    {
+        $input = new InputValueWithContext();
+
+        $gate = new NotGate($input);
+        $result = $gate->execute($context);
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function withContextProvider()
+    {
+        return [
+            [false, true],
+            [true, false],
+        ];
     }
 }

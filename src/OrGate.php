@@ -35,10 +35,10 @@ class OrGate extends AbstractLogicGate
     /**
      * {@inheritDoc}
      */
-    public function execute(): bool
+    public function execute($context = null): bool
     {
         foreach ($this->inputValues as $inputValue) {
-            if ($inputValue->getValue()) {
+            if ($inputValue->getValue($context)) {
                 return true;
             }
         }

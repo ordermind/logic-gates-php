@@ -9,7 +9,9 @@ interface LogicGateInputValueInterface
     /**
      * Gets the input value.
      *
+     * @param mixed $context
+     *
      * @return bool
      */
-    public function getValue() : bool;
+    public function getValue($context = null) : bool;
 }

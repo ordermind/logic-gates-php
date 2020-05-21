@@ -8,6 +8,7 @@ use ArgumentCountError;
 use Ordermind\LogicGates\AndGate;
 use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
+use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
 use TypeError;
 
@@ -121,6 +122,28 @@ class AndGateTest extends TestCase
             [false, true, false, true],
             [false, true, true, false],
             [true, true, true, true],
+        ];
+    }
+
+    /**
+     * @dataProvider withContextProvider
+     */
+    public function testWithContext(bool $expectedResult, bool $context)
+    {
+        $input1 = new InputValueWithContext();
+        $input2 = new InputValueWithContext();
+
+        $gate = new AndGate($input1, $input2);
+        $result = $gate->execute($context);
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function withContextProvider()
+    {
+        return [
+            [true, true],
+            [false, false],
         ];
     }
 }
