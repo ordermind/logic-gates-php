@@ -57,77 +57,6 @@ class NorGateTest extends TestCase
     }
 
     /**
-     * @dataProvider oneValueProvider
-     */
-    public function testOneValue(bool $expectedResult, bool $input)
-    {
-        $gate = new NorGate(
-            $this->inputValueFactory->createFromNative($input)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function oneValueProvider() : array
-    {
-        return [
-            [true, false],
-            [false, true],
-        ];
-    }
-
-    /**
-     * @dataProvider twoValuesProvider
-     */
-    public function testTwoValues(bool $expectedResult, bool $input1, bool $input2)
-    {
-        $gate = new NorGate(
-            $this->inputValueFactory->createFromNative($input1),
-            $this->inputValueFactory->createFromNative($input2)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function twoValuesProvider() : array
-    {
-        return [
-            [true, false, false],
-            [false, false, true],
-            [false, true, false],
-            [false, true, true],
-        ];
-    }
-
-    /**
-     * @dataProvider threeValuesProvider
-     */
-    public function testThreeValues(bool $expectedResult, bool $input1, bool $input2, bool $input3)
-    {
-        $gate = new NorGate(
-            $this->inputValueFactory->createFromNative($input1),
-            $this->inputValueFactory->createFromNative($input2),
-            $this->inputValueFactory->createFromNative($input3)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function threeValuesProvider() : array
-    {
-        return [
-            [true, false, false, false],
-            [false, false, false, true],
-            [false, false, true, false],
-            [false, false, true, true],
-            [false, true, false, false],
-            [false, true, false, true],
-            [false, true, true, false],
-            [false, true, true, true],
-        ];
-    }
-
-    /**
      * @dataProvider withContextProvider
      */
     public function testWithContext(bool $expectedResult, bool $context)
@@ -146,6 +75,42 @@ class NorGateTest extends TestCase
         return [
             [false, true],
             [true, false],
+        ];
+    }
+
+    /**
+     * @dataProvider truthTableProvider
+     */
+    public function testTruthTable(bool $expectedResult, array $nativeInputValues)
+    {
+        $gate = new NorGate(...array_map(function (bool $nativeValue) {
+            return $this->inputValueFactory->createFromNative($nativeValue);
+        }, $nativeInputValues));
+
+        $result = $gate->execute();
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function truthTableProvider()
+    {
+        return [
+            [true, [false]],                // 0
+            [false, [true]],                // 1
+
+            [true, [false, false]],         // 0 0
+            [false, [false, true]],         // 0 1
+            [false, [true, false]],         // 1 0
+            [false, [true, true]],          // 1 1
+
+            [true, [false, false, false]],  // 0 0 0
+            [false, [false, false, true]],  // 0 0 1
+            [false, [false, true, false]],  // 0 1 0
+            [false, [false, true, true]],   // 0 1 1
+            [false, [true, false, false]],  // 1 0 0
+            [false, [true, false, true]],   // 1 0 1
+            [false, [true, true, false]],   // 1 1 0
+            [false, [true, true, true]],    // 1 1 1
         ];
     }
 }

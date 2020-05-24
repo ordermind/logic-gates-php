@@ -57,75 +57,6 @@ class AndGateTest extends TestCase
     }
 
     /**
-     * @dataProvider oneValueProvider
-     */
-    public function testOneValue(bool $expectedResult, bool $input)
-    {
-        $gate = new AndGate($this->inputValueFactory->createFromNative($input));
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function oneValueProvider() : array
-    {
-        return [
-            [false, false],
-            [true, true],
-        ];
-    }
-
-    /**
-     * @dataProvider twoValuesProvider
-     */
-    public function testTwoValues(bool $expectedResult, bool $input1, bool $input2)
-    {
-        $gate = new AndGate(
-            $this->inputValueFactory->createFromNative($input1),
-            $this->inputValueFactory->createFromNative($input2)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function twoValuesProvider() : array
-    {
-        return [
-            [false, false, false],
-            [false, false, true],
-            [false, true, false],
-            [true, true, true],
-        ];
-    }
-
-    /**
-     * @dataProvider threeValuesProvider
-     */
-    public function testThreeValues(bool $expectedResult, bool $input1, bool $input2, bool $input3)
-    {
-        $gate = new AndGate(
-            $this->inputValueFactory->createFromNative($input1),
-            $this->inputValueFactory->createFromNative($input2),
-            $this->inputValueFactory->createFromNative($input3)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function threeValuesProvider() : array
-    {
-        return [
-            [false, false, false, false],
-            [false, false, false, true],
-            [false, false, true, false],
-            [false, false, true, true],
-            [false, true, false, false],
-            [false, true, false, true],
-            [false, true, true, false],
-            [true, true, true, true],
-        ];
-    }
-
-    /**
      * @dataProvider withContextProvider
      */
     public function testWithContext(bool $expectedResult, bool $context)
@@ -144,6 +75,42 @@ class AndGateTest extends TestCase
         return [
             [true, true],
             [false, false],
+        ];
+    }
+
+    /**
+     * @dataProvider truthTableProvider
+     */
+    public function testTruthTable(bool $expectedResult, array $nativeInputValues)
+    {
+        $gate = new AndGate(...array_map(function (bool $nativeValue) {
+            return $this->inputValueFactory->createFromNative($nativeValue);
+        }, $nativeInputValues));
+
+        $result = $gate->execute();
+
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function truthTableProvider()
+    {
+        return [
+            [false, [false]],               // 0
+            [true, [true]],                 // 1
+
+            [false, [false, false]],        // 0 0
+            [false, [false, true]],         // 0 1
+            [false, [true, false]],         // 1 0
+            [true, [true, true]],           // 1 1
+
+            [false, [false, false, false]], // 0 0 0
+            [false, [false, false, true]],  // 0 0 1
+            [false, [false, true, false]],  // 0 1 0
+            [false, [false, true, true]],   // 0 1 1
+            [false, [true, false, false]],  // 1 0 0
+            [false, [true, false, true]],   // 1 0 1
+            [false, [true, true, false]],   // 1 1 0
+            [true, [true, true, true]],     // 1 1 1
         ];
     }
 }

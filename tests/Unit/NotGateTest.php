@@ -57,27 +57,7 @@ class NotGateTest extends TestCase
         new NotGate(true);
     }
 
-    /**
-     * @dataProvider oneValueProvider
-     */
-    public function testOneValue(bool $expectedResult, bool $input)
-    {
-        $gate = new NotGate(
-            $this->inputValueFactory->createFromNative($input)
-        );
-        $result = $gate->execute();
-        $this->assertSame($expectedResult, $result);
-    }
-
-    public function oneValueProvider() : array
-    {
-        return [
-            [true, false],
-            [false, true],
-        ];
-    }
-
-    public function testTwoValues()
+    public function testMultipleValues()
     {
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('A NOT gate must be instantiated with exactly one input value');
@@ -102,6 +82,26 @@ class NotGateTest extends TestCase
         return [
             [false, true],
             [true, false],
+        ];
+    }
+
+    /**
+     * @dataProvider truthTableProvider
+     */
+    public function testTruthTable(bool $expectedResult, bool $input)
+    {
+        $gate = new NotGate(
+            $this->inputValueFactory->createFromNative($input)
+        );
+        $result = $gate->execute();
+        $this->assertSame($expectedResult, $result);
+    }
+
+    public function truthTableProvider() : array
+    {
+        return [
+            [true, false],  // 0
+            [false, true],  // 1
         ];
     }
 }

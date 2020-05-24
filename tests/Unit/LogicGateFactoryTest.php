@@ -54,7 +54,10 @@ class LogicGateFactoryTest extends TestCase
         }, $nativeInputValues);
 
         $gate = $this->logicGateFactory->createFromEnum(new LogicGateEnum($gateName), ...$inputValues);
+
         $this->assertSame($expectedClass, get_class($gate));
+        $this->assertSame($gateName, $gate->getName());
+        $this->assertSame($inputValues, $gate->getInputValues());
     }
 
     public function createFromEnumProvider()
