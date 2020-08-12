@@ -11,15 +11,17 @@ class LogicGateFactory
     /**
      * Creates a logic gate from an enum.
      *
-     * @param LogicGateEnum                  $gateEnum
-     * @param LogicGateInputValueInterface[] ...$inputValues One or more input values.
+     * @param LogicGateEnum                $gateEnum
+     * @param LogicGateInputValueInterface ...$inputValues
      *
      * @return LogicGateInterface
      *
      * @throws UnexpectedValueException
      */
-    public function createFromEnum(LogicGateEnum $gateEnum, ...$inputValues) : LogicGateInterface
-    {
+    public function createFromEnum(
+        LogicGateEnum $gateEnum,
+        LogicGateInputValueInterface ...$inputValues
+    ) : LogicGateInterface {
         if ($gateEnum->getValue() === LogicGateEnum::AND) {
             return new AndGate(...$inputValues);
         }
