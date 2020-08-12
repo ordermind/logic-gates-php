@@ -13,12 +13,7 @@ class NorGate implements LogicGateInterface
      */
     private $orGate;
 
-    /**
-     * NorGate constructor.
-     *
-     * @param LogicGateInputValueInterface[] ...$inputValues One or more input values.
-     */
-    public function __construct(...$inputValues)
+    public function __construct(LogicGateInputValueInterface ...$inputValues)
     {
         if (count($inputValues) < 1) {
             throw new ArgumentCountError(

@@ -10,7 +10,6 @@ use Ordermind\LogicGates\OrGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class OrGateTest extends TestCase
 {
@@ -47,13 +46,6 @@ class OrGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('An OR gate must be instantiated with at least one input value');
         new OrGate();
-    }
-
-    public function testIllegalValueType()
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
-        new OrGate(true);
     }
 
     /**

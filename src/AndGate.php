@@ -6,14 +6,14 @@ namespace Ordermind\LogicGates;
 
 use ArgumentCountError;
 
-class AndGate extends AbstractLogicGate
+class AndGate implements LogicGateInterface
 {
     /**
-     * AndGate constructor.
-     *
-     * @param LogicGateInputValueInterface[] ...$inputValues One or more input values.
+     * @var LogicGateInputValueInterface[]
      */
-    public function __construct(...$inputValues)
+    private $inputValues;
+
+    public function __construct(LogicGateInputValueInterface ...$inputValues)
     {
         if (count($inputValues) < 1) {
             throw new ArgumentCountError(
@@ -21,7 +21,7 @@ class AndGate extends AbstractLogicGate
             );
         }
 
-        parent::__construct(...$inputValues);
+        $this->inputValues = $inputValues;
     }
 
     /**
@@ -30,6 +30,14 @@ class AndGate extends AbstractLogicGate
     public static function getName(): string
     {
         return LogicGateEnum::AND;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getInputValues() : array
+    {
+        return $this->inputValues;
     }
 
     /**
@@ -44,5 +52,13 @@ class AndGate extends AbstractLogicGate
         }
 
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getValue($context = null) : bool
+    {
+        return $this->execute($context);
     }
 }

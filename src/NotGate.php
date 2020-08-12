@@ -6,14 +6,14 @@ namespace Ordermind\LogicGates;
 
 use ArgumentCountError;
 
-class NotGate extends AbstractLogicGate
+class NotGate implements LogicGateInterface
 {
     /**
-     * NotGate constructor.
-     *
-     * @param LogicGateInputValueInterface[] ...$inputValues One or more input values.
+     * @var LogicGateInputValueInterface[]
      */
-    public function __construct(...$inputValues)
+    private $inputValues;
+
+    public function __construct(LogicGateInputValueInterface ...$inputValues)
     {
         if (count($inputValues) != 1) {
             throw new ArgumentCountError(
@@ -21,7 +21,7 @@ class NotGate extends AbstractLogicGate
             );
         }
 
-        parent::__construct(...$inputValues);
+        $this->inputValues = $inputValues;
     }
 
     /**
@@ -35,8 +35,24 @@ class NotGate extends AbstractLogicGate
     /**
      * {@inheritDoc}
      */
+    public function getInputValues() : array
+    {
+        return $this->inputValues;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function execute($context = null): bool
     {
         return !$this->inputValues[0]->getValue($context);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getValue($context = null) : bool
+    {
+        return $this->execute($context);
     }
 }

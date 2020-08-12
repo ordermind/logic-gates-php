@@ -11,7 +11,6 @@ use Ordermind\LogicGates\Test\Fixtures\InputValueTrue;
 use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use Ordermind\LogicGates\XorGate;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class XorGateTest extends TestCase
 {
@@ -55,13 +54,6 @@ class XorGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('An XOR gate must be instantiated with at least two input values');
         new XorGate(new InputValueTrue());
-    }
-
-    public function testIllegalValueType()
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
-        new XorGate(true, false);
     }
 
     /**

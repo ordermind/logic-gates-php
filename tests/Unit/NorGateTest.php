@@ -10,7 +10,6 @@ use Ordermind\LogicGates\NorGate;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class NorGateTest extends TestCase
 {
@@ -31,13 +30,6 @@ class NorGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('A NOR gate must be instantiated with at least one input value');
         new NorGate();
-    }
-
-    public function testIllegalValueType()
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
-        new NorGate(true);
     }
 
     public function testGetName()

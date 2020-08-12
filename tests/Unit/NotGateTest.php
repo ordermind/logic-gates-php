@@ -12,7 +12,6 @@ use Ordermind\LogicGates\Test\Fixtures\InputValueFalse;
 use Ordermind\LogicGates\Test\Fixtures\InputValueTrue;
 use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class NotGateTest extends TestCase
 {
@@ -48,13 +47,6 @@ class NotGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('A NOT gate must be instantiated with exactly one input value');
         new NotGate();
-    }
-
-    public function testIllegalValueType()
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
-        new NotGate(true);
     }
 
     public function testMultipleValues()

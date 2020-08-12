@@ -6,14 +6,14 @@ namespace Ordermind\LogicGates;
 
 use ArgumentCountError;
 
-class XorGate extends AbstractLogicGate
+class XorGate implements LogicGateInterface
 {
     /**
-     * XorGate constructor.
-     *
-     * @param LogicGateInputValueInterface[] ...$inputValues One or more input values.
+     * @var LogicGateInputValueInterface[]
      */
-    public function __construct(...$inputValues)
+    private $inputValues;
+
+    public function __construct(LogicGateInputValueInterface ...$inputValues)
     {
         if (count($inputValues) < 2) {
             throw new ArgumentCountError(
@@ -21,7 +21,7 @@ class XorGate extends AbstractLogicGate
             );
         }
 
-        parent::__construct(...$inputValues);
+        $this->inputValues = $inputValues;
     }
 
     /**
@@ -30,6 +30,14 @@ class XorGate extends AbstractLogicGate
     public static function getName(): string
     {
         return LogicGateEnum::XOR;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getInputValues() : array
+    {
+        return $this->inputValues;
     }
 
     /**
@@ -54,5 +62,13 @@ class XorGate extends AbstractLogicGate
         }
 
         return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getValue($context = null) : bool
+    {
+        return $this->execute($context);
     }
 }

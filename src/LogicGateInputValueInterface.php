@@ -7,7 +7,7 @@ namespace Ordermind\LogicGates;
 interface LogicGateInputValueInterface
 {
     /**
-     * Gets the input value.
+     * Gets the value.
      *
      * @param mixed $context
      *

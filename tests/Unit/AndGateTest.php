@@ -10,7 +10,6 @@ use Ordermind\LogicGates\LogicGateEnum;
 use Ordermind\LogicGates\Test\Fixtures\InputValueFactory;
 use Ordermind\LogicGates\Test\Fixtures\InputValueWithContext;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class AndGateTest extends TestCase
 {
@@ -47,13 +46,6 @@ class AndGateTest extends TestCase
         $this->expectException(ArgumentCountError::class);
         $this->expectExceptionMessage('An AND gate must be instantiated with at least one input value');
         new AndGate();
-    }
-
-    public function testIllegalValueType()
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('All input values to a logic gate must implement LogicGateInputValueInterface');
-        new AndGate(true);
     }
 
     /**
