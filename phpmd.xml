@@ -32,8 +32,8 @@
     </rule>
 
     <rule ref="rulesets/naming.xml">
-        <exclude name="ShortMethodName" />
         <exclude name="BooleanGetMethodName" />
+        <exclude name="ShortMethodName" />
     </rule>
     <rule ref="rulesets/naming.xml/ShortMethodName">
         <properties>
