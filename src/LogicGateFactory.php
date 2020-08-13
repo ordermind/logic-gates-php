@@ -21,7 +21,7 @@ class LogicGateFactory
     public function createFromEnum(
         LogicGateEnum $gateEnum,
         LogicGateInputValueInterface ...$inputValues
-    ) : LogicGateInterface {
+    ): LogicGateInterface {
         if ($gateEnum->getValue() === LogicGateEnum::AND) {
             return new AndGate(...$inputValues);
         }

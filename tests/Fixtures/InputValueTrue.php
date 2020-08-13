@@ -11,7 +11,7 @@ class InputValueTrue implements LogicGateInputValueInterface
     /**
      * {@inheritDoc}
      */
-    public function getValue($context = null) : bool
+    public function getValue($context = null): bool
     {
         return true;
     }

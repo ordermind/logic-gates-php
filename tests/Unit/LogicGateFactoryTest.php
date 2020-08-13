@@ -29,7 +29,7 @@ class LogicGateFactoryTest extends TestCase
      */
     private $logicGateFactory;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
 

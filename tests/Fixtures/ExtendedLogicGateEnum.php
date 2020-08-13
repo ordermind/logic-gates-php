@@ -8,5 +8,5 @@ use Ordermind\LogicGates\LogicGateEnum;
 
 class ExtendedLogicGateEnum extends LogicGateEnum
 {
-    const NEW = 'NEW';
+    public const NEW = 'NEW';
 }

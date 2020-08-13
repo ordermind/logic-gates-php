@@ -8,10 +8,10 @@ use MyCLabs\Enum\Enum;
 
 class LogicGateEnum extends Enum
 {
-    const AND = 'AND';
-    const NAND = 'NAND';
-    const OR = 'OR';
-    const NOR = 'NOR';
-    const XOR = 'XOR';
-    const NOT = 'NOT';
+    public const AND = 'AND';
+    public const NAND = 'NAND';
+    public const OR = 'OR';
+    public const NOR = 'NOR';
+    public const XOR = 'XOR';
+    public const NOT = 'NOT';
 }

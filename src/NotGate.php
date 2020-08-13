@@ -35,7 +35,7 @@ class NotGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public function getInputValues() : array
+    public function getInputValues(): array
     {
         return $this->inputValues;
     }
@@ -51,7 +51,7 @@ class NotGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public function getValue($context = null) : bool
+    public function getValue($context = null): bool
     {
         return $this->execute($context);
     }

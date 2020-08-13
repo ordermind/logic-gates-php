@@ -20,7 +20,7 @@ class NotGateTest extends TestCase
      */
     private $inputValueFactory;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -89,7 +89,7 @@ class NotGateTest extends TestCase
         $this->assertSame($expectedResult, $result);
     }
 
-    public function truthTableProvider() : array
+    public function truthTableProvider(): array
     {
         return [
             [true, false],  // 0

@@ -11,7 +11,7 @@ class InputValueFactory
     /**
      * Creates an input value object from a boolean value.
      */
-    public function createFromNative(bool $value) : LogicGateInputValueInterface
+    public function createFromNative(bool $value): LogicGateInputValueInterface
     {
         if (true === $value) {
             return new InputValueTrue();
