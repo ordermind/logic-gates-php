@@ -27,7 +27,7 @@ class AndGate implements LogicGateInterface
     /**
      * {@inheritDoc}
      */
-    public static function getName(): string
+    public function getName(): string
     {
         return LogicGateEnum::AND;
     }

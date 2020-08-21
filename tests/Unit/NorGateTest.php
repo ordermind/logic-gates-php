@@ -34,7 +34,12 @@ class NorGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::NOR, NorGate::getName());
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new NorGate($input1, $input2);
+
+        $this->assertSame(LogicGateEnum::NOR, $gate->getName());
     }
 
     public function testGetInputValues()

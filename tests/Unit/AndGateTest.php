@@ -27,7 +27,12 @@ class AndGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::AND, AndGate::getName());
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new AndGate($input1, $input2);
+
+        $this->assertSame(LogicGateEnum::AND, $gate->getName());
     }
 
     public function testGetInputValues()

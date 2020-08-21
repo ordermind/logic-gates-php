@@ -11,7 +11,7 @@ interface LogicGateInterface extends LogicGateInputValueInterface
      *
      * @return string
      */
-    public static function getName(): string;
+    public function getName(): string;
 
     /**
      * Gets the input values for the gate.

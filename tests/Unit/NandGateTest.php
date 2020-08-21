@@ -27,7 +27,12 @@ class NandGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::NAND, NandGate::getName());
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new NandGate($input1, $input2);
+
+        $this->assertSame(LogicGateEnum::NAND, $gate->getName());
     }
 
     public function testGetInputValues()

@@ -28,7 +28,12 @@ class XorGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::XOR, XorGate::getName());
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new XorGate($input1, $input2);
+
+        $this->assertSame(LogicGateEnum::XOR, $gate->getName());
     }
 
     public function testGetInputValues()

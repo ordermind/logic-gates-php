@@ -27,7 +27,12 @@ class OrGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::OR, OrGate::getName());
+        $input1 = $this->inputValueFactory->createFromNative(true);
+        $input2 = $this->inputValueFactory->createFromNative(false);
+
+        $gate = new OrGate($input1, $input2);
+
+        $this->assertSame(LogicGateEnum::OR, $gate->getName());
     }
 
     public function testGetInputValues()

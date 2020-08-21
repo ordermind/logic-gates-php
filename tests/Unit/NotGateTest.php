@@ -29,7 +29,11 @@ class NotGateTest extends TestCase
 
     public function testGetName()
     {
-        $this->assertSame(LogicGateEnum::NOT, NotGate::getName());
+        $input = $this->inputValueFactory->createFromNative(true);
+
+        $gate = new NotGate($input);
+
+        $this->assertSame(LogicGateEnum::NOT, $gate->getName());
     }
 
     public function testGetInputValues()
