@@ -105,11 +105,11 @@ class XorGateTest extends TestCase
             [false, [false, false, false]], // 0 0 0
             [true, [false, false, true]],   // 0 0 1
             [true, [false, true, false]],   // 0 1 0
-            [true, [false, true, true]],    // 0 1 1
+            [false, [false, true, true]],   // 0 1 1
             [true, [true, false, false]],   // 1 0 0
-            [true, [true, false, true]],    // 1 0 1
-            [true, [true, true, false]],    // 1 1 0
-            [false, [true, true, true]],    // 1 1 1
+            [false, [true, false, true]],   // 1 0 1
+            [false, [true, true, false]],   // 1 1 0
+            [true, [true, true, true]],     // 1 1 1
         ];
     }
 }

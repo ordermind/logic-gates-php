@@ -11,3 +11,6 @@ Currently supported gates:
 - [NOR](https://en.wikipedia.org/wiki/NOR_gate)
 - [XOR](https://en.wikipedia.org/wiki/XOR_gate)
 - [NOT](https://en.wikipedia.org/wiki/NOT_gate)
+
+### Note about the XOR gate
+If the number of input values for the XOR gate is greater than 2, it behaves as a cascade of 2-input gates and performs an odd-parity function. In effect that means that the output of the XOR gate is `true` if the number of `true` input values is odd, otherwise the output is `false`.
