@@ -1,6 +1,6 @@
 {
     "name": "ordermind/logic-gates",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "description": "Provides classes for logic gates such as AND and OR",
     "keywords": [
