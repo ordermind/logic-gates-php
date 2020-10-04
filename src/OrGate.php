@@ -11,7 +11,7 @@ class OrGate implements LogicGateInterface
     /**
      * @var LogicGateInputValueInterface[]
      */
-    private $inputValues;
+    private array $inputValues;
 
     public function __construct(LogicGateInputValueInterface ...$inputValues)
     {

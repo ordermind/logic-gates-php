@@ -8,10 +8,7 @@ use ArgumentCountError;
 
 class NandGate implements LogicGateInterface
 {
-    /**
-     * @var AndGate
-     */
-    private $andGate;
+    private AndGate $andGate;
 
     public function __construct(LogicGateInputValueInterface ...$inputValues)
     {

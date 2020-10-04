@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class NandGateTest extends TestCase
 {
-    /**
-     * @var InputValueFactory
-     */
-    private $inputValueFactory;
+    private InputValueFactory $inputValueFactory;
 
     protected function setUp(): void
     {

@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class NorGateTest extends TestCase
 {
-    /**
-     * @var InputValueFactory
-     */
-    private $inputValueFactory;
+    private InputValueFactory $inputValueFactory;
 
     protected function setUp(): void
     {

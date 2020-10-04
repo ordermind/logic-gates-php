@@ -19,15 +19,8 @@ use UnexpectedValueException;
 
 class LogicGateFactoryTest extends TestCase
 {
-    /**
-     * @var InputValueFactory
-     */
-    private $inputValueFactory;
-
-    /**
-     * @var LogicGateFactory
-     */
-    private $logicGateFactory;
+    private InputValueFactory $inputValueFactory;
+    private LogicGateFactory $logicGateFactory;
 
     protected function setUp(): void
     {

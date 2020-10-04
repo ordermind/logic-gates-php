@@ -15,10 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 class NotGateTest extends TestCase
 {
-    /**
-     * @var InputValueFactory
-     */
-    private $inputValueFactory;
+    private InputValueFactory $inputValueFactory;
 
     protected function setUp(): void
     {

@@ -8,10 +8,7 @@ use ArgumentCountError;
 
 class NorGate implements LogicGateInterface
 {
-    /**
-     * @var OrGate
-     */
-    private $orGate;
+    private OrGate $orGate;
 
     public function __construct(LogicGateInputValueInterface ...$inputValues)
     {

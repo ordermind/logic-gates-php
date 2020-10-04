@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class XorGateTest extends TestCase
 {
-    /**
-     * @var InputValueFactory
-     */
-    private $inputValueFactory;
+    private InputValueFactory $inputValueFactory;
 
     protected function setUp(): void
     {
